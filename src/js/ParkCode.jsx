@@ -21,6 +21,14 @@ const Ace = window.ace;
  */
 
 /**
+ * @typedef {Object} CtxData
+ * @property {number} x - The x coordinate.
+ * @property {number} y - The y coordinate.
+ * @property {FileObject} file - The file in the context menu.
+ * @property {string} source - The source of the context menu.
+ */
+
+/**
  *
  * @param {FileObject[]} data
  * @param {string} targetPath
@@ -57,6 +65,9 @@ const ParkCode = () => {
 	const [sessions, setSessions] = useState([]);
 	const [session, setSession] = useState(null);
 
+	/** @type {[CtxData, React.Dispatch<React.SetStateAction<CtxData>>]} */
+	const [contextMenu, setContextMenu] = useState(null);
+
 	const get_files = () => {
 		fetch('files')
 			.then((response) => response.json())
@@ -70,8 +81,9 @@ const ParkCode = () => {
 	 * @param {FileObject} file
 	 * @param {string} parentIndex
 	 */
-	const handleFileclick = (file, parentIndex) => {
+	const handleFileclick = (file) => {
 		console.log(file);
+		setContextMenu(null);
 
 		if (file.type == 'directory') {
 			if (!file.children) {
@@ -166,6 +178,82 @@ const ParkCode = () => {
 		}
 	};
 
+	const handleNewFile = () => {
+		const file = contextMenu.file;
+
+		if (file && file.type == 'directory') {
+			var filename = prompt('Enter file name');
+			if (filename) {
+				fetch('files/new', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						path: file.path,
+						filename: filename,
+					}),
+				})
+					.then((response) => response.json())
+					.then((children) => {
+						setFiles((files) => {
+							var newfiles = [...files];
+							insertChildren(newfiles, file.path, children);
+							return newfiles;
+						});
+					});
+			}
+		}
+	};
+
+	const handleRenameFile = () => {
+		const file = contextMenu.file;
+
+		if (file && file.type == 'file') {
+			const paths = file.path.split('/');
+			const dirname = paths.slice(0, -1).join('/');
+
+			var old_filename = file.name;
+			var new_filename = prompt('Enter new file name', old_filename);
+
+			if (new_filename) {
+				fetch('files/rename', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						path: file.path,
+						filename: new_filename,
+					}),
+				})
+					.then((response) => response.json())
+					.then((children) => {
+						setFiles((files) => {
+							if (dirname) {
+								var newfiles = [...files];
+								insertChildren(newfiles, dirname, children);
+								return newfiles;
+							}
+
+							return children;
+						});
+
+						const thefile = children.find((file) => file.name == new_filename);
+
+						const sindex = sessions.findIndex((session) => session.file.path == file.path)
+						if (sindex != -1) {
+							setSessions((sessions) => {
+								var newSessions = [...sessions];
+								newSessions[sindex].file = thefile;
+								return newSessions;
+							});
+						}
+					});
+			}
+		}
+	};
+
 	useEffect(() => {
 		// console.log(editor_ref.current);
 		window.myace = editor_ref.current;
@@ -229,6 +317,12 @@ const ParkCode = () => {
 
 	useEffect(() => {
 		get_files();
+
+		document.addEventListener('click', (e) => {
+			if (!e.target.closest('.ParkCode__context')) {
+				setContextMenu(null);
+			}
+		});
 	}, []);
 
 	return (
@@ -237,7 +331,9 @@ const ParkCode = () => {
 				<div className="ParkCode__files__heading">
 					Explorer
 				</div>
-				<FileTree files={files} onClick={handleFileclick} parentIndex="" session={session} />
+				<FileTree files={files} onClick={handleFileclick} parentIndex="" session={session} onRightClick={(data) => {
+					setContextMenu(data);
+				}} />
 			</div>
 			<div className="ParkCode__content">
 				<div className="ParkCode__content__tabs">
@@ -246,6 +342,16 @@ const ParkCode = () => {
 							return (
 								<div className={'ParkCode__content__tabs__item' + (sess === session ? ' active' : '')} key={index} onClick={() => {
 									setSession(sess);
+								}} onContextMenu={(e) => {
+									e.preventDefault();
+									e.stopPropagation();
+
+									setContextMenu({
+										file: sess.file,
+										x: e.clientX,
+										y: e.clientY,
+										source: 'tab',
+									});
 								}}>
 									{sess.file.name}
 
@@ -285,8 +391,38 @@ const ParkCode = () => {
 				{/* <div className="ParkCode__content__result">
 					{session && session.result}
 				</div> */}
-				<div className="ParkCode__content__result hide-empty" dangerouslySetInnerHTML={{__html: session && session.result ? session.result : ''}} />
+				<div className="ParkCode__content__result hide-empty" dangerouslySetInnerHTML={{ __html: session && session.result ? session.result : '' }} />
 			</div>
+
+			{contextMenu && contextMenu.file.type == 'directory' &&
+				<div className="ParkCode__context ParkCode__context--dir" style={{ top: contextMenu.y, left: contextMenu.x }}>
+					<div className="ParkCode__context__item" onClick={handleNewFile}>
+						Add new file
+					</div>
+					<div className="ParkCode__context__item">
+						Rename
+					</div>
+					<div className="ParkCode__context__item">
+						Delete
+					</div>
+				</div>
+			}
+
+			{contextMenu && contextMenu.file.type == 'file' &&
+				<div className="ParkCode__context ParkCode__context--file" style={{ top: contextMenu.y, left: contextMenu.x }}>
+					{contextMenu.source == 'filetree' && <div className="ParkCode__context__item" onClick={() => {
+						handleFileclick(contextMenu.file);
+					}}>
+						Open
+					</div>}
+					<div className="ParkCode__context__item" onClick={handleRenameFile}>
+						Rename
+					</div>
+					<div className="ParkCode__context__item">
+						Delete
+					</div>
+				</div>
+			}
 		</div>
 	);
 };
@@ -296,6 +432,7 @@ const ParkCode = () => {
  * @property {FileObject[]} files
  * @property {string} parentIndex
  * @property {Function} onClick
+ * @property {(data: CtxData) => ()} onRightClick
  * @property {EditSession} session
  */
 
@@ -303,9 +440,13 @@ const ParkCode = () => {
  * @param {FileTreeProps} props
  * @returns
  */
-const FileTree = ({ files, parentIndex, onClick, session }) => {
+const FileTree = ({ files, parentIndex, onClick, onRightClick, session }) => {
 	if (!onClick) {
 		onClick = () => { };
+	}
+
+	if (!onRightClick) {
+		onRightClick = () => { };
 	}
 
 	return (
@@ -322,8 +463,19 @@ const FileTree = ({ files, parentIndex, onClick, session }) => {
 						key={index}
 						data-type={file.type}
 						onClick={(e) => {
+							e.preventDefault();
 							e.stopPropagation();
-							onClick(file, parentIndex + '/' + index);
+							onClick(file);
+						}}
+						onContextMenu={(e) => {
+							e.preventDefault();
+							e.stopPropagation();
+							onRightClick({
+								file,
+								x: e.clientX,
+								y: e.clientY,
+								source: 'filetree',
+							});
 						}}
 						className={(session && session.file.path == file.path) ? 'active' : ''}
 					>
@@ -337,6 +489,7 @@ const FileTree = ({ files, parentIndex, onClick, session }) => {
 								files={file.children}
 								parentIndex={parentIndex + '/' + index}
 								onClick={onClick}
+								onRightClick={onRightClick}
 								session={session}
 							/>
 						)}

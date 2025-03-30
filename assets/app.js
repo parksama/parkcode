@@ -57466,6 +57466,14 @@ var Ace = window.ace;
  */
 
 /**
+ * @typedef {Object} CtxData
+ * @property {number} x - The x coordinate.
+ * @property {number} y - The y coordinate.
+ * @property {FileObject} file - The file in the context menu.
+ * @property {string} source - The source of the context menu.
+ */
+
+/**
  *
  * @param {FileObject[]} data
  * @param {string} targetPath
@@ -57517,6 +57525,12 @@ var ParkCode = function ParkCode() {
     _useState6 = _slicedToArray(_useState5, 2),
     session = _useState6[0],
     setSession = _useState6[1];
+
+  /** @type {[CtxData, React.Dispatch<React.SetStateAction<CtxData>>]} */
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState8 = _slicedToArray(_useState7, 2),
+    contextMenu = _useState8[0],
+    setContextMenu = _useState8[1];
   var get_files = function get_files() {
     fetch('files').then(function (response) {
       return response.json();
@@ -57530,8 +57544,9 @@ var ParkCode = function ParkCode() {
    * @param {FileObject} file
    * @param {string} parentIndex
    */
-  var handleFileclick = function handleFileclick(file, parentIndex) {
+  var handleFileclick = function handleFileclick(file) {
     console.log(file);
+    setContextMenu(null);
     if (file.type == 'directory') {
       if (!file.children) {
         var param = new URLSearchParams();
@@ -57615,6 +57630,77 @@ var ParkCode = function ParkCode() {
       });
     }
   };
+  var handleNewFile = function handleNewFile() {
+    var file = contextMenu.file;
+    if (file && file.type == 'directory') {
+      var filename = prompt('Enter file name');
+      if (filename) {
+        fetch('files/new', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            path: file.path,
+            filename: filename
+          })
+        }).then(function (response) {
+          return response.json();
+        }).then(function (children) {
+          setFiles(function (files) {
+            var newfiles = _toConsumableArray(files);
+            insertChildren(newfiles, file.path, children);
+            return newfiles;
+          });
+        });
+      }
+    }
+  };
+  var handleRenameFile = function handleRenameFile() {
+    var file = contextMenu.file;
+    if (file && file.type == 'file') {
+      var paths = file.path.split('/');
+      var dirname = paths.slice(0, -1).join('/');
+      var old_filename = file.name;
+      var new_filename = prompt('Enter new file name', old_filename);
+      if (new_filename) {
+        fetch('files/rename', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            path: file.path,
+            filename: new_filename
+          })
+        }).then(function (response) {
+          return response.json();
+        }).then(function (children) {
+          setFiles(function (files) {
+            if (dirname) {
+              var newfiles = _toConsumableArray(files);
+              insertChildren(newfiles, dirname, children);
+              return newfiles;
+            }
+            return children;
+          });
+          var thefile = children.find(function (file) {
+            return file.name == new_filename;
+          });
+          var sindex = sessions.findIndex(function (session) {
+            return session.file.path == file.path;
+          });
+          if (sindex != -1) {
+            setSessions(function (sessions) {
+              var newSessions = _toConsumableArray(sessions);
+              newSessions[sindex].file = thefile;
+              return newSessions;
+            });
+          }
+        });
+      }
+    }
+  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     // console.log(editor_ref.current);
     window.myace = editor_ref.current;
@@ -57679,6 +57765,11 @@ var ParkCode = function ParkCode() {
   }, [session, sessions]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     get_files();
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.ParkCode__context')) {
+        setContextMenu(null);
+      }
+    });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
     className: "ParkCode",
@@ -57691,7 +57782,10 @@ var ParkCode = function ParkCode() {
         files: files,
         onClick: handleFileclick,
         parentIndex: "",
-        session: session
+        session: session,
+        onRightClick: function onRightClick(data) {
+          setContextMenu(data);
+        }
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "ParkCode__content",
@@ -57704,6 +57798,16 @@ var ParkCode = function ParkCode() {
               className: 'ParkCode__content__tabs__item' + (sess === session ? ' active' : ''),
               onClick: function onClick() {
                 setSession(sess);
+              },
+              onContextMenu: function onContextMenu(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                setContextMenu({
+                  file: sess.file,
+                  x: e.clientX,
+                  y: e.clientY,
+                  source: 'tab'
+                });
               },
               children: [sess.file.name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
                 className: "ParkCode__content__tabs__item__close",
@@ -57748,6 +57852,43 @@ var ParkCode = function ParkCode() {
           __html: session && session.result ? session.result : ''
         }
       })]
+    }), contextMenu && contextMenu.file.type == 'directory' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "ParkCode__context ParkCode__context--dir",
+      style: {
+        top: contextMenu.y,
+        left: contextMenu.x
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "ParkCode__context__item",
+        onClick: handleNewFile,
+        children: "Add new file"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "ParkCode__context__item",
+        children: "Rename"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "ParkCode__context__item",
+        children: "Delete"
+      })]
+    }), contextMenu && contextMenu.file.type == 'file' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "ParkCode__context ParkCode__context--file",
+      style: {
+        top: contextMenu.y,
+        left: contextMenu.x
+      },
+      children: [contextMenu.source == 'filetree' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "ParkCode__context__item",
+        onClick: function onClick() {
+          handleFileclick(contextMenu.file);
+        },
+        children: "Open"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "ParkCode__context__item",
+        onClick: handleRenameFile,
+        children: "Rename"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "ParkCode__context__item",
+        children: "Delete"
+      })]
     })]
   });
 };
@@ -57757,6 +57898,7 @@ var ParkCode = function ParkCode() {
  * @property {FileObject[]} files
  * @property {string} parentIndex
  * @property {Function} onClick
+ * @property {(data: CtxData) => ()} onRightClick
  * @property {EditSession} session
  */
 
@@ -57768,9 +57910,13 @@ var _FileTree = function FileTree(_ref) {
   var files = _ref.files,
     parentIndex = _ref.parentIndex,
     _onClick = _ref.onClick,
+    onRightClick = _ref.onRightClick,
     session = _ref.session;
   if (!_onClick) {
     _onClick = function onClick() {};
+  }
+  if (!onRightClick) {
+    onRightClick = function onRightClick() {};
   }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("ul", {
     "data-parent-index": parentIndex,
@@ -57782,8 +57928,19 @@ var _FileTree = function FileTree(_ref) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("li", {
         "data-type": file.type,
         onClick: function onClick(e) {
+          e.preventDefault();
           e.stopPropagation();
-          _onClick(file, parentIndex + '/' + index);
+          _onClick(file);
+        },
+        onContextMenu: function onContextMenu(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          onRightClick({
+            file: file,
+            x: e.clientX,
+            y: e.clientY,
+            source: 'filetree'
+          });
         },
         className: session && session.file.path == file.path ? 'active' : '',
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
@@ -57794,6 +57951,7 @@ var _FileTree = function FileTree(_ref) {
           files: file.children,
           parentIndex: parentIndex + '/' + index,
           onClick: _onClick,
+          onRightClick: onRightClick,
           session: session
         })]
       }, index);

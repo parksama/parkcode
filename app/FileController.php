@@ -9,6 +9,19 @@ class FileController
 		return view('home');
 	}
 
+	private function list_directories($directory)
+	{
+		$items = is_dir($directory) ? $this->getDirectoryItems($directory) : [];
+		$items = array_map(function ($item) {
+			$paths = explode('/', $item['path']);
+			$item['path'] = implode('/', array_slice($paths, 1));
+
+			return $item;
+		}, $items);
+
+		return $items;
+	}
+
 	public function files()
 	{
 		$directory = 'storage';
@@ -19,14 +32,7 @@ class FileController
 			$directory .= '/' . $subdir;
 		}
 
-		$items = is_dir($directory) ? $this->getDirectoryItems($directory) : [];
-		$items = array_map(function ($item) {
-			$paths = explode('/', $item['path']);
-			$item['path'] = implode('/', array_slice($paths, 1));
-
-			return $item;
-		}, $items);
-
+		$items = $this->list_directories($directory);
 
 		return response()->json($items);
 	}
@@ -61,6 +67,33 @@ class FileController
 		}));
 
 		return array_values($items);
+	}
+
+	public function new_file()
+	{
+		$directory = 'storage';
+		$path = request()->getInputHandler()->value('path', '');
+		$filename = request()->getInputHandler()->value('filename', '');
+
+		file_put_contents($directory . '/' . $path . '/' . $filename, '');
+
+		return response()->json($this->list_directories($directory . '/' . $path));
+	}
+
+	public function rename_file()
+	{
+		$directory = 'storage';
+		$path = request()->getInputHandler()->value('path', '');
+		$filename = request()->getInputHandler()->value('filename', '');
+
+		$dirname = dirname($directory . '/' . $path);
+
+		rename(
+			$directory . '/' . $path,
+			$dirname . '/' . $filename
+		);
+
+		return response()->json($this->list_directories($dirname));
 	}
 
 	public function content()

@@ -1822,6 +1822,7 @@ html {
   display: flex;
   height: 100vh;
   overflow: hidden;
+  position: relative;
   background: linear-gradient(90deg, #182848 0%, #4b6cb7 100%);
 }
 .ParkCode__files {
@@ -1927,6 +1928,33 @@ html {
   border-top: 1px solid #888;
   border-left: 1px solid #888;
 }
+.ParkCode__context {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 200px;
+  height: auto;
+  z-index: 5;
+  color: #fff;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: hsla(0, 0%, 0%, 0.35);
+  box-shadow: 1px 1px 5px hsla(0, 0%, 0%, 0.25);
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 5px;
+}
+.ParkCode__context__item {
+  font-size: 14px;
+  padding: 7px 14px;
+  border-radius: 5px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.ParkCode__context__item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
 
 .hide-empty:empty {
   display: none;
@@ -1947,6 +1975,20 @@ html {
 .ace-monokai .ace_gutter-active-line {
   background-color: rgb(31.385483871, 33.55, 35.714516129);
   color: #fff;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.75);
+  background-clip: padding-box;
+  border: 4px solid transparent;
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=style.css.map*/
