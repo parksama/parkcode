@@ -4,6 +4,9 @@ import { createRoot } from 'react-dom/client';
 // import "ace-builds";
 import AceEditor from 'react-ace';
 import { get_mode_by_extension } from './modes';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { store } from './store';
+import { updateContextMenu } from './dataSlice';
 
 window.get_mode_by_extension = get_mode_by_extension;
 
@@ -56,6 +59,10 @@ function insertChildren(data, targetPath, newChildren, open = true) {
 	return false;
 }
 
+function clone_object(object) {
+	return JSON.parse(JSON.stringify(object));
+}
+
 const ParkCode = () => {
 	const editor_ref = useRef(null);
 
@@ -65,8 +72,14 @@ const ParkCode = () => {
 	const [sessions, setSessions] = useState([]);
 	const [session, setSession] = useState(null);
 
-	/** @type {[CtxData, React.Dispatch<React.SetStateAction<CtxData>>]} */
-	const [contextMenu, setContextMenu] = useState(null);
+	/** @type {CtxData} */
+	const contextMenu = useSelector((state) => state.data.contextMenu);
+	const dispatch = useDispatch();
+
+	/** @param {CtxData} data - The data to update the context menu with. */
+	const setContextMenu = (data) => {
+		dispatch(updateContextMenu(data ? clone_object(data) : null));
+	};
 
 	const get_files = () => {
 		fetch('files')
@@ -441,6 +454,9 @@ const ParkCode = () => {
  * @returns
  */
 const FileTree = ({ files, parentIndex, onClick, onRightClick, session }) => {
+	const globalContextMenu = useSelector((state) => state.data.contextMenu);
+	const dispatch = useDispatch();
+
 	if (!onClick) {
 		onClick = () => { };
 	}
@@ -457,6 +473,9 @@ const FileTree = ({ files, parentIndex, onClick, onRightClick, session }) => {
 				if (file.type == 'directory') {
 					icon = 'folder';
 				}
+
+				const is_active = (session && session.file.path == file.path)
+					|| (globalContextMenu && globalContextMenu.file.path == file.path);
 
 				return (
 					<li
@@ -477,7 +496,7 @@ const FileTree = ({ files, parentIndex, onClick, onRightClick, session }) => {
 								source: 'filetree',
 							});
 						}}
-						className={(session && session.file.path == file.path) ? 'active' : ''}
+						className={is_active ? 'active' : ''}
 					>
 						<div>
 							<span className={'seti seti-' + icon}></span>
@@ -502,5 +521,9 @@ const FileTree = ({ files, parentIndex, onClick, onRightClick, session }) => {
 
 document.addEventListener('DOMContentLoaded', () => {
 	const root = createRoot(document.querySelector('#ParkCode-root'));
-	root.render(<ParkCode />);
+	root.render(
+		<Provider store={store}>
+			<ParkCode />
+		</Provider>
+	);
 });
