@@ -1,0 +1,27 @@
+{
+  "name": "parkcode",
+  "version": "1.0.0",
+  "description": "Play with your code before implement",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "mix watch",
+    "build": "mix",
+    "prod": "mix --production"
+  },
+  "author": "parksama",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-react": "^7.26.3",
+    "@types/react": "^19.0.12",
+    "laravel-mix": "^6.0.49",
+    "sass": "^1.86.0",
+    "sass-loader": "12.1.0"
+  },
+  "dependencies": {
+    "ace-builds": "^1.39.1",
+    "react": "^19.0.0",
+    "react-ace": "^14.0.1",
+    "react-dom": "^19.0.0"
+  }
+}

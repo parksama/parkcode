@@ -1,0 +1,17 @@
+{
+	"typeAcquisition": {
+		"include": [
+			"jquery"
+		]
+	},
+	"exclude": [
+		".git",
+		".vscode",
+		"app",
+		"node_modules",
+		"routes",
+		"storage",
+		"vendor",
+		"assets",
+	]
+}

@@ -1,0 +1,1952 @@
+@font-face {
+  font-family: "seti";
+  src: url("fonts/seti.eot");
+  src: url("fonts/seti.eot?#iefix") format("eot"), url("fonts/seti.woff") format("woff"), url("fonts/seti.ttf") format("truetype"), url("fonts/seti.svg#seti") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+.seti {
+  font-family: "seti";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-transform: none;
+}
+
+.seti-default:before {
+  display: inline-block;
+  content: "\e023";
+  color: #d4d7d6;
+}
+
+.seti-folder:before {
+  display: inline-block;
+  content: "\e032";
+  color: #cbcb41;
+}
+
+.seti-bsl:before {
+  display: inline-block;
+  content: "\e00a";
+  color: #cc3e44;
+}
+
+.seti-mdo:before {
+  display: inline-block;
+  content: "\e062";
+  color: #cc3e44;
+}
+
+.seti-cls:before {
+  display: inline-block;
+  content: "\e083";
+  color: #519aba;
+}
+
+.seti-apex:before {
+  display: inline-block;
+  content: "\e083";
+  color: #519aba;
+}
+
+.seti-asm:before {
+  display: inline-block;
+  content: "\e004";
+  color: #cc3e44;
+}
+
+.seti-s:before {
+  display: inline-block;
+  content: "\e004";
+  color: #cc3e44;
+}
+
+.seti-bicep:before {
+  display: inline-block;
+  content: "\e008";
+  color: #519aba;
+}
+
+.seti-bzl:before {
+  display: inline-block;
+  content: "\e007";
+  color: #8dc149;
+}
+
+.seti-bazel:before {
+  display: inline-block;
+  content: "\e007";
+  color: #8dc149;
+}
+
+.seti-BUILD:before {
+  display: inline-block;
+  content: "\e007";
+  color: #8dc149;
+}
+
+.seti-WORKSPACE:before {
+  display: inline-block;
+  content: "\e007";
+  color: #8dc149;
+}
+
+.seti-bazelignore:before {
+  display: inline-block;
+  content: "\e007";
+  color: #8dc149;
+}
+
+.seti-bazelversion:before {
+  display: inline-block;
+  content: "\e007";
+  color: #8dc149;
+}
+
+.seti-c:before {
+  display: inline-block;
+  content: "\e00c";
+  color: #519aba;
+}
+
+.seti-h:before {
+  display: inline-block;
+  content: "\e00c";
+  color: #a074c4;
+}
+
+.seti-m:before {
+  display: inline-block;
+  content: "\e00c";
+  color: #cbcb41;
+}
+
+.seti-cs:before {
+  display: inline-block;
+  content: "\e00b";
+  color: #519aba;
+}
+
+.seti-cshtml:before {
+  display: inline-block;
+  content: "\e048";
+  color: #519aba;
+}
+
+.seti-aspx:before {
+  display: inline-block;
+  content: "\e048";
+  color: #519aba;
+}
+
+.seti-ascx:before {
+  display: inline-block;
+  content: "\e048";
+  color: #8dc149;
+}
+
+.seti-asax:before {
+  display: inline-block;
+  content: "\e048";
+  color: #cbcb41;
+}
+
+.seti-master:before {
+  display: inline-block;
+  content: "\e048";
+  color: #cbcb41;
+}
+
+.seti-cc:before {
+  display: inline-block;
+  content: "\e01a";
+  color: #519aba;
+}
+
+.seti-cpp:before {
+  display: inline-block;
+  content: "\e01a";
+  color: #519aba;
+}
+
+.seti-cxx:before {
+  display: inline-block;
+  content: "\e01a";
+  color: #519aba;
+}
+
+.seti-hh:before {
+  display: inline-block;
+  content: "\e01a";
+  color: #a074c4;
+}
+
+.seti-hpp:before {
+  display: inline-block;
+  content: "\e01a";
+  color: #a074c4;
+}
+
+.seti-hxx:before {
+  display: inline-block;
+  content: "\e01a";
+  color: #a074c4;
+}
+
+.seti-mm:before {
+  display: inline-block;
+  content: "\e01a";
+  color: #cbcb41;
+}
+
+.seti-clj:before {
+  display: inline-block;
+  content: "\e013";
+  color: #8dc149;
+}
+
+.seti-cljs:before {
+  display: inline-block;
+  content: "\e013";
+  color: #8dc149;
+}
+
+.seti-cljc:before {
+  display: inline-block;
+  content: "\e013";
+  color: #8dc149;
+}
+
+.seti-edn:before {
+  display: inline-block;
+  content: "\e013";
+  color: #519aba;
+}
+
+.seti-cfc:before {
+  display: inline-block;
+  content: "\e018";
+  color: #519aba;
+}
+
+.seti-cfm:before {
+  display: inline-block;
+  content: "\e018";
+  color: #519aba;
+}
+
+.seti-coffee:before {
+  display: inline-block;
+  content: "\e016";
+  color: #cbcb41;
+}
+
+.seti-litcoffee:before {
+  display: inline-block;
+  content: "\e016";
+  color: #cbcb41;
+}
+
+.seti-config:before {
+  display: inline-block;
+  content: "\e019";
+  color: #6d8086;
+}
+
+.seti-cfg:before {
+  display: inline-block;
+  content: "\e019";
+  color: #6d8086;
+}
+
+.seti-conf:before {
+  display: inline-block;
+  content: "\e019";
+  color: #6d8086;
+}
+
+.seti-cr:before {
+  display: inline-block;
+  content: "\e01b";
+  color: #d4d7d6;
+}
+
+.seti-ecr:before {
+  display: inline-block;
+  content: "\e01c";
+  color: #d4d7d6;
+}
+
+.seti-slang:before {
+  display: inline-block;
+  content: "\e01c";
+  color: #d4d7d6;
+}
+
+.seti-cson:before {
+  display: inline-block;
+  content: "\e055";
+  color: #cbcb41;
+}
+
+.seti-css:before {
+  display: inline-block;
+  content: "\e01d";
+  color: #519aba;
+}
+
+.seti-css.map:before {
+  display: inline-block;
+  content: "\e01d";
+  color: #519aba;
+}
+
+.seti-sss:before {
+  display: inline-block;
+  content: "\e01d";
+  color: #519aba;
+}
+
+.seti-csv:before {
+  display: inline-block;
+  content: "\e01e";
+  color: #8dc149;
+}
+
+.seti-xls:before {
+  display: inline-block;
+  content: "\e0a3";
+  color: #8dc149;
+}
+
+.seti-xlsx:before {
+  display: inline-block;
+  content: "\e0a3";
+  color: #8dc149;
+}
+
+.seti-cu:before {
+  display: inline-block;
+  content: "\e01f";
+  color: #8dc149;
+}
+
+.seti-cuh:before {
+  display: inline-block;
+  content: "\e01f";
+  color: #a074c4;
+}
+
+.seti-hu:before {
+  display: inline-block;
+  content: "\e01f";
+  color: #a074c4;
+}
+
+.seti-cake:before {
+  display: inline-block;
+  content: "\e00d";
+  color: #cc3e44;
+}
+
+.seti-ctp:before {
+  display: inline-block;
+  content: "\e00e";
+  color: #cc3e44;
+}
+
+.seti-d:before {
+  display: inline-block;
+  content: "\e020";
+  color: #cc3e44;
+}
+
+.seti-doc:before {
+  display: inline-block;
+  content: "\e0a2";
+  color: #519aba;
+}
+
+.seti-docx:before {
+  display: inline-block;
+  content: "\e0a2";
+  color: #519aba;
+}
+
+.seti-ejs:before {
+  display: inline-block;
+  content: "\e027";
+  color: #cbcb41;
+}
+
+.seti-ex:before {
+  display: inline-block;
+  content: "\e028";
+  color: #a074c4;
+}
+
+.seti-exs:before {
+  display: inline-block;
+  content: "\e029";
+  color: #a074c4;
+}
+
+.seti-elm:before {
+  display: inline-block;
+  content: "\e02a";
+  color: #519aba;
+}
+
+.seti-ico:before {
+  display: inline-block;
+  content: "\e02f";
+  color: #cbcb41;
+}
+
+.seti-fs:before {
+  display: inline-block;
+  content: "\e02e";
+  color: #519aba;
+}
+
+.seti-fsx:before {
+  display: inline-block;
+  content: "\e02e";
+  color: #519aba;
+}
+
+.seti-gitignore:before {
+  display: inline-block;
+  content: "\e034";
+  color: #41535b;
+}
+
+.seti-gitconfig:before {
+  display: inline-block;
+  content: "\e034";
+  color: #41535b;
+}
+
+.seti-gitkeep:before {
+  display: inline-block;
+  content: "\e034";
+  color: #41535b;
+}
+
+.seti-gitattributes:before {
+  display: inline-block;
+  content: "\e034";
+  color: #41535b;
+}
+
+.seti-gitmodules:before {
+  display: inline-block;
+  content: "\e034";
+  color: #41535b;
+}
+
+.seti-COMMIT_EDITMSG:before {
+  display: inline-block;
+  content: "\e034";
+  color: #41535b;
+}
+
+.seti-MERGE_MSG:before {
+  display: inline-block;
+  content: "\e034";
+  color: #41535b;
+}
+
+.seti-go:before {
+  display: inline-block;
+  content: "\e03a";
+  color: #519aba;
+}
+
+.seti-slide:before {
+  display: inline-block;
+  content: "\e039";
+  color: #519aba;
+}
+
+.seti-article:before {
+  display: inline-block;
+  content: "\e039";
+  color: #519aba;
+}
+
+.seti-gd:before {
+  display: inline-block;
+  content: "\e03b";
+  color: #519aba;
+}
+
+.seti-godot:before {
+  display: inline-block;
+  content: "\e03b";
+  color: #cc3e44;
+}
+
+.seti-tres:before {
+  display: inline-block;
+  content: "\e03b";
+  color: #cbcb41;
+}
+
+.seti-tscn:before {
+  display: inline-block;
+  content: "\e03b";
+  color: #a074c4;
+}
+
+.seti-gradle:before {
+  display: inline-block;
+  content: "\e03c";
+  color: #519aba;
+}
+
+.seti-groovy:before {
+  display: inline-block;
+  content: "\e03d";
+  color: #8dc149;
+}
+
+.seti-gsp:before {
+  display: inline-block;
+  content: "\e03d";
+  color: #8dc149;
+}
+
+.seti-gql:before {
+  display: inline-block;
+  content: "\e03e";
+  color: #f55385;
+}
+
+.seti-graphql:before {
+  display: inline-block;
+  content: "\e03e";
+  color: #f55385;
+}
+
+.seti-graphqls:before {
+  display: inline-block;
+  content: "\e03e";
+  color: #f55385;
+}
+
+.seti-hack:before {
+  display: inline-block;
+  content: "\e041";
+  color: #e37933;
+}
+
+.seti-haml:before {
+  display: inline-block;
+  content: "\e042";
+  color: #cc3e44;
+}
+
+.seti-handlebars:before {
+  display: inline-block;
+  content: "\e063";
+  color: #e37933;
+}
+
+.seti-hbs:before {
+  display: inline-block;
+  content: "\e063";
+  color: #e37933;
+}
+
+.seti-hjs:before {
+  display: inline-block;
+  content: "\e063";
+  color: #e37933;
+}
+
+.seti-hs:before {
+  display: inline-block;
+  content: "\e044";
+  color: #a074c4;
+}
+
+.seti-lhs:before {
+  display: inline-block;
+  content: "\e044";
+  color: #a074c4;
+}
+
+.seti-hx:before {
+  display: inline-block;
+  content: "\e045";
+  color: #e37933;
+}
+
+.seti-hxs:before {
+  display: inline-block;
+  content: "\e045";
+  color: #cbcb41;
+}
+
+.seti-hxp:before {
+  display: inline-block;
+  content: "\e045";
+  color: #519aba;
+}
+
+.seti-hxml:before {
+  display: inline-block;
+  content: "\e045";
+  color: #a074c4;
+}
+
+.seti-html:before {
+  display: inline-block;
+  content: "\e048";
+  color: #e37933;
+}
+
+.seti-jade:before {
+  display: inline-block;
+  content: "\e04f";
+  color: #cc3e44;
+}
+
+.seti-java:before {
+  display: inline-block;
+  content: "\e050";
+  color: #cc3e44;
+}
+
+.seti-class:before {
+  display: inline-block;
+  content: "\e050";
+  color: #519aba;
+}
+
+.seti-classpath:before {
+  display: inline-block;
+  content: "\e050";
+  color: #cc3e44;
+}
+
+.seti-properties:before {
+  display: inline-block;
+  content: "\e050";
+  color: #cc3e44;
+}
+
+.seti-js:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-js.map:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-cjs:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-cjs.map:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-mjs:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-mjs.map:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-spec.js:before {
+  display: inline-block;
+  content: "\e051";
+  color: #e37933;
+}
+
+.seti-spec.cjs:before {
+  display: inline-block;
+  content: "\e051";
+  color: #e37933;
+}
+
+.seti-spec.mjs:before {
+  display: inline-block;
+  content: "\e051";
+  color: #e37933;
+}
+
+.seti-test.js:before {
+  display: inline-block;
+  content: "\e051";
+  color: #e37933;
+}
+
+.seti-test.cjs:before {
+  display: inline-block;
+  content: "\e051";
+  color: #e37933;
+}
+
+.seti-test.mjs:before {
+  display: inline-block;
+  content: "\e051";
+  color: #e37933;
+}
+
+.seti-es:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-es5:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-es6:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-es7:before {
+  display: inline-block;
+  content: "\e051";
+  color: #cbcb41;
+}
+
+.seti-jinja:before {
+  display: inline-block;
+  content: "\e053";
+  color: #cc3e44;
+}
+
+.seti-jinja2:before {
+  display: inline-block;
+  content: "\e053";
+  color: #cc3e44;
+}
+
+.seti-json:before {
+  display: inline-block;
+  content: "\e055";
+  color: #cbcb41;
+}
+
+.seti-jl:before {
+  display: inline-block;
+  content: "\e056";
+  color: #a074c4;
+}
+
+.seti-karma.conf.js:before {
+  display: inline-block;
+  content: "\e057";
+  color: #8dc149;
+}
+
+.seti-karma.conf.cjs:before {
+  display: inline-block;
+  content: "\e057";
+  color: #8dc149;
+}
+
+.seti-karma.conf.mjs:before {
+  display: inline-block;
+  content: "\e057";
+  color: #8dc149;
+}
+
+.seti-karma.conf.coffee:before {
+  display: inline-block;
+  content: "\e057";
+  color: #8dc149;
+}
+
+.seti-kt:before {
+  display: inline-block;
+  content: "\e058";
+  color: #e37933;
+}
+
+.seti-kts:before {
+  display: inline-block;
+  content: "\e058";
+  color: #e37933;
+}
+
+.seti-dart:before {
+  display: inline-block;
+  content: "\e021";
+  color: #519aba;
+}
+
+.seti-less:before {
+  display: inline-block;
+  content: "\e059";
+  color: #519aba;
+}
+
+.seti-liquid:before {
+  display: inline-block;
+  content: "\e05b";
+  color: #8dc149;
+}
+
+.seti-ls:before {
+  display: inline-block;
+  content: "\e05c";
+  color: #519aba;
+}
+
+.seti-lua:before {
+  display: inline-block;
+  content: "\e05e";
+  color: #519aba;
+}
+
+.seti-markdown:before {
+  display: inline-block;
+  content: "\e060";
+  color: #519aba;
+}
+
+.seti-md:before {
+  display: inline-block;
+  content: "\e060";
+  color: #519aba;
+}
+
+.seti-argdown:before {
+  display: inline-block;
+  content: "\e003";
+  color: #519aba;
+}
+
+.seti-ad:before {
+  display: inline-block;
+  content: "\e003";
+  color: #519aba;
+}
+
+.seti-README.md:before {
+  display: inline-block;
+  content: "\e04d";
+  color: #519aba;
+}
+
+.seti-README.txt:before {
+  display: inline-block;
+  content: "\e04d";
+  color: #519aba;
+}
+
+.seti-README:before {
+  display: inline-block;
+  content: "\e04d";
+  color: #519aba;
+}
+
+.seti-CHANGELOG.md:before {
+  display: inline-block;
+  content: "\e012";
+  color: #519aba;
+}
+
+.seti-CHANGELOG.txt:before {
+  display: inline-block;
+  content: "\e012";
+  color: #519aba;
+}
+
+.seti-CHANGELOG:before {
+  display: inline-block;
+  content: "\e012";
+  color: #519aba;
+}
+
+.seti-CHANGES.md:before {
+  display: inline-block;
+  content: "\e012";
+  color: #519aba;
+}
+
+.seti-CHANGES.txt:before {
+  display: inline-block;
+  content: "\e012";
+  color: #519aba;
+}
+
+.seti-CHANGES:before {
+  display: inline-block;
+  content: "\e012";
+  color: #519aba;
+}
+
+.seti-VERSION.md:before {
+  display: inline-block;
+  content: "\e012";
+  color: #519aba;
+}
+
+.seti-VERSION.txt:before {
+  display: inline-block;
+  content: "\e012";
+  color: #519aba;
+}
+
+.seti-VERSION:before {
+  display: inline-block;
+  content: "\e012";
+  color: #519aba;
+}
+
+.seti-mvnw:before {
+  display: inline-block;
+  content: "\e061";
+  color: #cc3e44;
+}
+
+.seti-pom.xml:before {
+  display: inline-block;
+  content: "\e061";
+  color: #cc3e44;
+}
+
+.seti-mustache:before {
+  display: inline-block;
+  content: "\e063";
+  color: #e37933;
+}
+
+.seti-stache:before {
+  display: inline-block;
+  content: "\e063";
+  color: #e37933;
+}
+
+.seti-nim:before {
+  display: inline-block;
+  content: "\e065";
+  color: #cbcb41;
+}
+
+.seti-nims:before {
+  display: inline-block;
+  content: "\e065";
+  color: #cbcb41;
+}
+
+.seti-github-issues:before {
+  display: inline-block;
+  content: "\e037";
+  color: #d4d7d6;
+}
+
+.seti-ipynb:before {
+  display: inline-block;
+  content: "\e066";
+  color: #519aba;
+}
+
+.seti-njk:before {
+  display: inline-block;
+  content: "\e069";
+  color: #8dc149;
+}
+
+.seti-nunjucks:before {
+  display: inline-block;
+  content: "\e069";
+  color: #8dc149;
+}
+
+.seti-nunjs:before {
+  display: inline-block;
+  content: "\e069";
+  color: #8dc149;
+}
+
+.seti-nunj:before {
+  display: inline-block;
+  content: "\e069";
+  color: #8dc149;
+}
+
+.seti-njs:before {
+  display: inline-block;
+  content: "\e069";
+  color: #8dc149;
+}
+
+.seti-nj:before {
+  display: inline-block;
+  content: "\e069";
+  color: #8dc149;
+}
+
+.seti-npm-debug.log:before {
+  display: inline-block;
+  content: "\e067";
+  color: #41535b;
+}
+
+.seti-npmignore:before {
+  display: inline-block;
+  content: "\e067";
+  color: #cc3e44;
+}
+
+.seti-npmrc:before {
+  display: inline-block;
+  content: "\e067";
+  color: #cc3e44;
+}
+
+.seti-ml:before {
+  display: inline-block;
+  content: "\e06a";
+  color: #e37933;
+}
+
+.seti-mli:before {
+  display: inline-block;
+  content: "\e06a";
+  color: #e37933;
+}
+
+.seti-cmx:before {
+  display: inline-block;
+  content: "\e06a";
+  color: #e37933;
+}
+
+.seti-cmxa:before {
+  display: inline-block;
+  content: "\e06a";
+  color: #e37933;
+}
+
+.seti-odata:before {
+  display: inline-block;
+  content: "\e06b";
+  color: #e37933;
+}
+
+.seti-pl:before {
+  display: inline-block;
+  content: "\e06e";
+  color: #519aba;
+}
+
+.seti-php:before {
+  display: inline-block;
+  content: "\e070";
+  color: #a074c4;
+}
+
+.seti-php.inc:before {
+  display: inline-block;
+  content: "\e070";
+  color: #a074c4;
+}
+
+.seti-pipeline:before {
+  display: inline-block;
+  content: "\e071";
+  color: #e37933;
+}
+
+.seti-pddl:before {
+  display: inline-block;
+  content: "\e06c";
+  color: #a074c4;
+}
+
+.seti-plan:before {
+  display: inline-block;
+  content: "\e072";
+  color: #8dc149;
+}
+
+.seti-happenings:before {
+  display: inline-block;
+  content: "\e043";
+  color: #519aba;
+}
+
+.seti-ps1:before {
+  display: inline-block;
+  content: "\e074";
+  color: #519aba;
+}
+
+.seti-psd1:before {
+  display: inline-block;
+  content: "\e074";
+  color: #519aba;
+}
+
+.seti-psm1:before {
+  display: inline-block;
+  content: "\e074";
+  color: #519aba;
+}
+
+.seti-prisma:before {
+  display: inline-block;
+  content: "\e075";
+  color: #519aba;
+}
+
+.seti-pug:before {
+  display: inline-block;
+  content: "\e078";
+  color: #cc3e44;
+}
+
+.seti-pp:before {
+  display: inline-block;
+  content: "\e079";
+  color: #cbcb41;
+}
+
+.seti-epp:before {
+  display: inline-block;
+  content: "\e079";
+  color: #cbcb41;
+}
+
+.seti-purs:before {
+  display: inline-block;
+  content: "\e07a";
+  color: #d4d7d6;
+}
+
+.seti-py:before {
+  display: inline-block;
+  content: "\e07b";
+  color: #519aba;
+}
+
+.seti-jsx:before {
+  display: inline-block;
+  content: "\e07d";
+  color: #519aba;
+}
+
+.seti-spec.jsx:before {
+  display: inline-block;
+  content: "\e07d";
+  color: #e37933;
+}
+
+.seti-test.jsx:before {
+  display: inline-block;
+  content: "\e07d";
+  color: #e37933;
+}
+
+.seti-cjsx:before {
+  display: inline-block;
+  content: "\e07d";
+  color: #519aba;
+}
+
+.seti-tsx:before {
+  display: inline-block;
+  content: "\e07d";
+  color: #519aba;
+}
+
+.seti-spec.tsx:before {
+  display: inline-block;
+  content: "\e07d";
+  color: #e37933;
+}
+
+.seti-test.tsx:before {
+  display: inline-block;
+  content: "\e07d";
+  color: #e37933;
+}
+
+.seti-re:before {
+  display: inline-block;
+  content: "\e07e";
+  color: #cc3e44;
+}
+
+.seti-res:before {
+  display: inline-block;
+  content: "\e07f";
+  color: #cc3e44;
+}
+
+.seti-resi:before {
+  display: inline-block;
+  content: "\e07f";
+  color: #f55385;
+}
+
+.seti-R:before {
+  display: inline-block;
+  color: #519aba;
+}
+
+.seti-rmd:before {
+  display: inline-block;
+  color: #519aba;
+}
+
+.seti-rb:before {
+  display: inline-block;
+  content: "\e081";
+  color: #cc3e44;
+}
+
+.seti-erb:before {
+  display: inline-block;
+  content: "\e049";
+  color: #cc3e44;
+}
+
+.seti-erb.html:before {
+  display: inline-block;
+  content: "\e049";
+  color: #cc3e44;
+}
+
+.seti-html.erb:before {
+  display: inline-block;
+  content: "\e049";
+  color: #cc3e44;
+}
+
+.seti-rs:before {
+  display: inline-block;
+  content: "\e082";
+  color: #6d8086;
+}
+
+.seti-sass:before {
+  display: inline-block;
+  content: "\e084";
+  color: #f55385;
+}
+
+.seti-scss:before {
+  display: inline-block;
+  content: "\e084";
+  color: #f55385;
+}
+
+.seti-springBeans:before {
+  display: inline-block;
+  content: "\e08c";
+  color: #8dc149;
+}
+
+.seti-slim:before {
+  display: inline-block;
+  content: "\e08a";
+  color: #e37933;
+}
+
+.seti-smarty.tpl:before {
+  display: inline-block;
+  content: "\e08b";
+  color: #cbcb41;
+}
+
+.seti-tpl:before {
+  display: inline-block;
+  content: "\e08b";
+  color: #cbcb41;
+}
+
+.seti-sbt:before {
+  display: inline-block;
+  content: "\e085";
+  color: #519aba;
+}
+
+.seti-scala:before {
+  display: inline-block;
+  content: "\e086";
+  color: #cc3e44;
+}
+
+.seti-sol:before {
+  display: inline-block;
+  content: "\e02d";
+  color: #519aba;
+}
+
+.seti-styl:before {
+  display: inline-block;
+  content: "\e08e";
+  color: #8dc149;
+}
+
+.seti-svelte:before {
+  display: inline-block;
+  content: "\e090";
+  color: #cc3e44;
+}
+
+.seti-swift:before {
+  display: inline-block;
+  content: "\e092";
+  color: #e37933;
+}
+
+.seti-sql:before {
+  display: inline-block;
+  content: "\e022";
+  color: #f55385;
+}
+
+.seti-soql:before {
+  display: inline-block;
+  content: "\e022";
+  color: #519aba;
+}
+
+.seti-tf:before {
+  display: inline-block;
+  content: "\e093";
+  color: #a074c4;
+}
+
+.seti-tf.json:before {
+  display: inline-block;
+  content: "\e093";
+  color: #a074c4;
+}
+
+.seti-tfvars:before {
+  display: inline-block;
+  content: "\e093";
+  color: #a074c4;
+}
+
+.seti-tfvars.json:before {
+  display: inline-block;
+  content: "\e093";
+  color: #a074c4;
+}
+
+.seti-tex:before {
+  display: inline-block;
+  content: "\e094";
+  color: #519aba;
+}
+
+.seti-sty:before {
+  display: inline-block;
+  content: "\e094";
+  color: #cbcb41;
+}
+
+.seti-dtx:before {
+  display: inline-block;
+  content: "\e094";
+  color: #e37933;
+}
+
+.seti-ins:before {
+  display: inline-block;
+  content: "\e094";
+  color: #d4d7d6;
+}
+
+.seti-txt:before {
+  display: inline-block;
+  content: "\e023";
+  color: #d4d7d6;
+}
+
+.seti-toml:before {
+  display: inline-block;
+  content: "\e019";
+  color: #6d8086;
+}
+
+.seti-twig:before {
+  display: inline-block;
+  content: "\e098";
+  color: #8dc149;
+}
+
+.seti-ts:before {
+  display: inline-block;
+  content: "\e099";
+  color: #519aba;
+}
+
+.seti-spec.ts:before {
+  display: inline-block;
+  content: "\e099";
+  color: #e37933;
+}
+
+.seti-test.ts:before {
+  display: inline-block;
+  content: "\e099";
+  color: #e37933;
+}
+
+.seti-tsconfig.json:before {
+  display: inline-block;
+  content: "\e097";
+  color: #519aba;
+}
+
+.seti-vala:before {
+  display: inline-block;
+  content: "\e09a";
+  color: #6d8086;
+}
+
+.seti-vapi:before {
+  display: inline-block;
+  content: "\e09a";
+  color: #6d8086;
+}
+
+.seti-component:before {
+  display: inline-block;
+  content: "\e048";
+  color: #e37933;
+}
+
+.seti-vite.config.js:before {
+  display: inline-block;
+  color: #cbcb41;
+}
+
+.seti-vite.config.ts:before {
+  display: inline-block;
+  color: #cbcb41;
+}
+
+.seti-vite.config.mjs:before {
+  display: inline-block;
+  color: #cbcb41;
+}
+
+.seti-vite.config.mts:before {
+  display: inline-block;
+  color: #cbcb41;
+}
+
+.seti-vite.config.cjs:before {
+  display: inline-block;
+  color: #cbcb41;
+}
+
+.seti-vite.config.cts:before {
+  display: inline-block;
+  color: #cbcb41;
+}
+
+.seti-vue:before {
+  display: inline-block;
+  content: "\e09c";
+  color: #8dc149;
+}
+
+.seti-wasm:before {
+  display: inline-block;
+  content: "\e09d";
+  color: #a074c4;
+}
+
+.seti-wat:before {
+  display: inline-block;
+  content: "\e09e";
+  color: #a074c4;
+}
+
+.seti-xml:before {
+  display: inline-block;
+  content: "\e0a4";
+  color: #e37933;
+}
+
+.seti-yml:before {
+  display: inline-block;
+  content: "\e0a6";
+  color: #a074c4;
+}
+
+.seti-yaml:before {
+  display: inline-block;
+  content: "\e0a6";
+  color: #a074c4;
+}
+
+.seti-swagger.json:before {
+  display: inline-block;
+  content: "\e055";
+  color: #8dc149;
+}
+
+.seti-swagger.yml:before {
+  display: inline-block;
+  content: "\e055";
+  color: #8dc149;
+}
+
+.seti-swagger.yaml:before {
+  display: inline-block;
+  content: "\e055";
+  color: #8dc149;
+}
+
+.seti-pro:before {
+  display: inline-block;
+  content: "\e077";
+  color: #e37933;
+}
+
+.seti-zig:before {
+  display: inline-block;
+  content: "\e0a7";
+  color: #e37933;
+}
+
+.seti-jar:before {
+  display: inline-block;
+  content: "\e0a8";
+  color: #cc3e44;
+}
+
+.seti-zip:before {
+  display: inline-block;
+  content: "\e0a8";
+  color: #6d8086;
+}
+
+.seti-wgt:before {
+  display: inline-block;
+  content: "\e0a0";
+  color: #519aba;
+}
+
+.seti-ai:before {
+  display: inline-block;
+  content: "\e04b";
+  color: #cbcb41;
+}
+
+.seti-psd:before {
+  display: inline-block;
+  content: "\e06f";
+  color: #519aba;
+}
+
+.seti-pdf:before {
+  display: inline-block;
+  content: "\e06d";
+  color: #cc3e44;
+}
+
+.seti-eot:before {
+  display: inline-block;
+  content: "\e033";
+  color: #cc3e44;
+}
+
+.seti-ttf:before {
+  display: inline-block;
+  content: "\e033";
+  color: #cc3e44;
+}
+
+.seti-woff:before {
+  display: inline-block;
+  content: "\e033";
+  color: #cc3e44;
+}
+
+.seti-woff2:before {
+  display: inline-block;
+  content: "\e033";
+  color: #cc3e44;
+}
+
+.seti-otf:before {
+  display: inline-block;
+  content: "\e033";
+  color: #cc3e44;
+}
+
+.seti-avif:before {
+  display: inline-block;
+  content: "\e04c";
+  color: #a074c4;
+}
+
+.seti-gif:before {
+  display: inline-block;
+  content: "\e04c";
+  color: #a074c4;
+}
+
+.seti-jpg:before {
+  display: inline-block;
+  content: "\e04c";
+  color: #a074c4;
+}
+
+.seti-jpeg:before {
+  display: inline-block;
+  content: "\e04c";
+  color: #a074c4;
+}
+
+.seti-png:before {
+  display: inline-block;
+  content: "\e04c";
+  color: #a074c4;
+}
+
+.seti-pxm:before {
+  display: inline-block;
+  content: "\e04c";
+  color: #a074c4;
+}
+
+.seti-svg:before {
+  display: inline-block;
+  content: "\e091";
+  color: #a074c4;
+}
+
+.seti-svgx:before {
+  display: inline-block;
+  content: "\e04c";
+  color: #a074c4;
+}
+
+.seti-tiff:before {
+  display: inline-block;
+  content: "\e04c";
+  color: #a074c4;
+}
+
+.seti-webp:before {
+  display: inline-block;
+  content: "\e04c";
+  color: #a074c4;
+}
+
+.seti-sublime-project:before {
+  display: inline-block;
+  content: "\e08f";
+  color: #e37933;
+}
+
+.seti-sublime-workspace:before {
+  display: inline-block;
+  content: "\e08f";
+  color: #e37933;
+}
+
+.seti-code-search:before {
+  display: inline-block;
+  content: "\e015";
+  color: #a074c4;
+}
+
+.seti-sh:before {
+  display: inline-block;
+  content: "\e089";
+  color: #8dc149;
+}
+
+.seti-zsh:before {
+  display: inline-block;
+  content: "\e089";
+  color: #8dc149;
+}
+
+.seti-fish:before {
+  display: inline-block;
+  content: "\e089";
+  color: #8dc149;
+}
+
+.seti-zshrc:before {
+  display: inline-block;
+  content: "\e089";
+  color: #8dc149;
+}
+
+.seti-bashrc:before {
+  display: inline-block;
+  content: "\e089";
+  color: #8dc149;
+}
+
+.seti-mov:before {
+  display: inline-block;
+  content: "\e09b";
+  color: #f55385;
+}
+
+.seti-ogv:before {
+  display: inline-block;
+  content: "\e09b";
+  color: #f55385;
+}
+
+.seti-webm:before {
+  display: inline-block;
+  content: "\e09b";
+  color: #f55385;
+}
+
+.seti-avi:before {
+  display: inline-block;
+  content: "\e09b";
+  color: #f55385;
+}
+
+.seti-mpg:before {
+  display: inline-block;
+  content: "\e09b";
+  color: #f55385;
+}
+
+.seti-mp4:before {
+  display: inline-block;
+  content: "\e09b";
+  color: #f55385;
+}
+
+.seti-mp3:before {
+  display: inline-block;
+  content: "\e005";
+  color: #a074c4;
+}
+
+.seti-ogg:before {
+  display: inline-block;
+  content: "\e005";
+  color: #a074c4;
+}
+
+.seti-wav:before {
+  display: inline-block;
+  content: "\e005";
+  color: #a074c4;
+}
+
+.seti-flac:before {
+  display: inline-block;
+  content: "\e005";
+  color: #a074c4;
+}
+
+.seti-3ds:before {
+  display: inline-block;
+  content: "\e091";
+  color: #519aba;
+}
+
+.seti-3dm:before {
+  display: inline-block;
+  content: "\e091";
+  color: #519aba;
+}
+
+.seti-stl:before {
+  display: inline-block;
+  content: "\e091";
+  color: #519aba;
+}
+
+.seti-obj:before {
+  display: inline-block;
+  content: "\e091";
+  color: #519aba;
+}
+
+.seti-dae:before {
+  display: inline-block;
+  content: "\e091";
+  color: #519aba;
+}
+
+.seti-bat:before {
+  display: inline-block;
+  content: "\e0a1";
+  color: #519aba;
+}
+
+.seti-cmd:before {
+  display: inline-block;
+  content: "\e0a1";
+  color: #519aba;
+}
+
+html {
+  font-size: 16px;
+}
+
+.ParkCode {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(90deg, #182848 0%, #4b6cb7 100%);
+}
+.ParkCode__files {
+  flex: 0 0 300px;
+  color: #fff;
+  overflow: auto;
+}
+.ParkCode__files__heading {
+  font-size: 1.5rem;
+  padding: 15px 10px 10px;
+  font-weight: 600;
+}
+.ParkCode__files ul {
+  padding-left: 0;
+}
+.ParkCode__files ul li {
+  display: block;
+  list-style: none;
+  cursor: pointer;
+}
+.ParkCode__files ul li > div {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+.ParkCode__files ul li > div span {
+  margin-right: 8px;
+}
+.ParkCode__files ul li[data-type=file] .seti {
+  font-size: 22px;
+  line-height: 1rem;
+  margin-right: 4px;
+}
+.ParkCode__files ul li.active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.ParkCode__files ul li ul {
+  padding-left: 0.5rem;
+}
+.ParkCode__content {
+  flex: 1;
+  max-width: calc(100% - 300px);
+  display: flex;
+  flex-direction: column;
+}
+.ParkCode__content__tabs {
+  flex: 0 0 auto;
+}
+.ParkCode__content__tabs__inner {
+  display: flex;
+  padding-top: 10px;
+}
+.ParkCode__content__tabs__item {
+  background-color: rgba(29, 31, 33, 0.5);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #fff;
+  padding: 10px 15px;
+  white-space: nowrap;
+  margin-right: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.ParkCode__content__tabs__item__close {
+  width: 10px;
+  height: 10px;
+  background: url(img/close.svg) no-repeat center center/contain;
+  filter: invert(1);
+  transition: all 0.3s;
+  margin-left: 10px;
+}
+.ParkCode__content__tabs__item__close:hover {
+  filter: invert(0.5);
+}
+.ParkCode__content__tabs__item.active {
+  background-color: #1d1f21;
+  border: 1px solid #888;
+  border-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+.ParkCode__content__tabs__item.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #1d1f21;
+}
+.ParkCode__content__editor {
+  flex: 1;
+  border-top: 1px solid #888;
+  border-left: 1px solid #888;
+}
+.ParkCode__content__result {
+  padding: 10px;
+  max-height: 50vh;
+  overflow: auto;
+  background: hsl(220, 6%, 10%);
+  color: #fff;
+  border-top: 1px solid #888;
+  border-left: 1px solid #888;
+}
+
+.hide-empty:empty {
+  display: none;
+}
+
+.ace-monokai {
+  background-color: #1d1f21;
+}
+
+.ace-monokai .ace_marker-layer .ace_active-line {
+  background: rgb(40.9274193548, 43.75, 46.5725806452);
+}
+
+.ace-monokai .ace_gutter {
+  background: #1d1f21;
+}
+
+.ace-monokai .ace_gutter-active-line {
+  background-color: rgb(31.385483871, 33.55, 35.714516129);
+  color: #fff;
+}
+
+/*# sourceMappingURL=style.css.map*/
